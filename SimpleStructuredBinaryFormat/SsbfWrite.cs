@@ -73,9 +73,9 @@ public static class SsbfWrite
             case NodeType.ULong:
                 stream.Write(((SsbfULongValue)node!).Value);
                 break;
-            case NodeType.HalfFloat:
-                stream.Write(((SsbfHalfFloatValue)node!).Value);
-                break;
+            // case NodeType.HalfFloat:
+            //     stream.Write(((SsbfHalfFloatValue)node!).Value);
+            //     break;
             case NodeType.Single:
                 stream.Write(((SsbfSingleValue)node!).Value);
                 break;
@@ -128,11 +128,11 @@ public static class SsbfWrite
         stream.Write(value);
     }
     
-    private static void Write<T>(this Stream stream, T value) where T : unmanaged
+    private static unsafe void Write<T>(this Stream stream, T value) where T : unmanaged
     {
-        Span<byte> buffer = stackalloc byte[Unsafe.SizeOf<T>()];
-        Unsafe.WriteUnaligned(ref MemoryMarshal.GetReference(buffer), value);
-        stream.Write(buffer);
+        var valuePtr = &value;
+        var span = new ReadOnlySpan<byte>(valuePtr, sizeof(T));
+        stream.Write(span);
     }
     
     private static Stream GetCompressionStream(Stream stream, Compression compression)

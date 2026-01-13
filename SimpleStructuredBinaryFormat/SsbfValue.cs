@@ -122,17 +122,17 @@ public class SsbfULongValue(ulong value) : SsbfValue<ulong>
     public override string ToString() => Value.ToString(CultureInfo.InvariantCulture);
 }
 
-/// <summary>
-/// Represents a half-precision floating-point value.
-/// </summary>
-/// <param name="value">The value.</param>
-public class SsbfHalfFloatValue(Half value) : SsbfValue<Half>
-{
-    public override NodeType Type => NodeType.HalfFloat;
-    public override Half Value { get; set; } = value;
-    
-    public override string ToString() => Value.ToString(CultureInfo.InvariantCulture);
-}
+// /// <summary>
+// /// Represents a half-precision floating-point value.
+// /// </summary>
+// /// <param name="value">The value.</param>
+// public class SsbfHalfFloatValue(Half value) : SsbfValue<Half>
+// {
+//     public override NodeType Type => NodeType.HalfFloat;
+//     public override Half Value { get; set; } = value;
+//     
+//     public override string ToString() => Value.ToString(CultureInfo.InvariantCulture);
+// }
 
 /// <summary>
 /// Represents a single-precision floating-point value.

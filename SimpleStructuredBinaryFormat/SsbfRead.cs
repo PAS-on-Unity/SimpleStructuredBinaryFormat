@@ -121,9 +121,9 @@ public static class SsbfRead
             _ => throw new NotSupportedException($"Compression mode '{compression}' is not supported.")
         };
 
-    private static T Read<T>(this Stream stream) where T : unmanaged
+    private unsafe static T Read<T>(this Stream stream) where T : unmanaged
     {
-        Span<byte> buffer = stackalloc byte[Unsafe.SizeOf<T>()];
+        Span<byte> buffer = stackalloc byte[sizeof(T)];
         var offset = 0;
         var remaining = buffer.Length;
         while (remaining > 0)

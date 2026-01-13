@@ -40,7 +40,7 @@ public abstract class SsbfNode
     public static implicit operator SsbfNode(ushort value) => new SsbfUShortValue(value);
     public static implicit operator SsbfNode(uint value) => new SsbfUIntegerValue(value);
     public static implicit operator SsbfNode(ulong value) => new SsbfULongValue(value);
-    public static implicit operator SsbfNode(Half value) => new SsbfHalfFloatValue(value);
+    // public static implicit operator SsbfNode(Half value) => new SsbfHalfFloatValue(value);
     public static implicit operator SsbfNode(float value) => new SsbfSingleValue(value);
     public static implicit operator SsbfNode(double value) => new SsbfDoubleValue(value);
     public static implicit operator SsbfNode(string value) => new SsbfStringValue(value);
@@ -56,7 +56,7 @@ public abstract class SsbfNode
     public static explicit operator ushort(SsbfNode node) => ((SsbfUShortValue)node).Value;
     public static explicit operator uint(SsbfNode node) => ((SsbfUIntegerValue)node).Value;
     public static explicit operator ulong(SsbfNode node) => ((SsbfULongValue)node).Value;
-    public static explicit operator Half(SsbfNode node) => ((SsbfHalfFloatValue)node).Value;
+    // public static explicit operator Half(SsbfNode node) => ((SsbfHalfFloatValue)node).Value;
     public static explicit operator float(SsbfNode node) => ((SsbfSingleValue)node).Value;
     public static explicit operator double(SsbfNode node) => ((SsbfDoubleValue)node).Value;
     public static explicit operator string(SsbfNode node) => ((SsbfStringValue)node).Value;
